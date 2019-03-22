@@ -6,7 +6,7 @@ use App\ShippingService;
 use App\Structures\AddressItem;
 
 require __DIR__ . '/../src/Structures/AddressItem.php';
-require __DIR__ . '/../src/Structures/OrderItem.php';
+require __DIR__ . '/../src/Structures/ProductItem.php';
 require __DIR__ . '/../src/ApiService.php';
 require __DIR__ . '/../src/Interfaces/CacheInterface.php';
 require __DIR__ . '/../src/FileCache.php';

@@ -4,7 +4,7 @@ namespace App;
 
 use App\Interfaces\CacheInterface;
 use App\Structures\AddressItem;
-use App\Structures\OrderItem;
+use App\Structures\ProductItem;
 
 class ShippingService
 {
@@ -13,11 +13,11 @@ class ShippingService
     }
 
     /**
-     * @param OrderItem[] $orderItems
+     * @param ProductItem[] $products
      * @param AddressItem $address
      * @return array
      */
-    public function getRates(array $orderItems, AddressItem $address): array
+    public function getRates(array $products, AddressItem $address): array
     {
         // Implement rate retrieval and caching
         return [];

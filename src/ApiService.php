@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Structures\AddressItem;
-use App\Structures\OrderItem;
+use App\Structures\ProductItem;
 use GuzzleHttp\Client;
 
 /**
@@ -19,12 +19,12 @@ class ApiService
     }
 
     /**
-     * @param OrderItem[] $items
+     * @param ProductItem[] $products
      * @param AddressItem $address
      * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getRates(array $items, AddressItem $address)
+    public function getRates(array $products, AddressItem $address)
     {
         // TODO fix the code
         $body = [

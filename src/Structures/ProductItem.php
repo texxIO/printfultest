@@ -2,7 +2,7 @@
 
 namespace App\Structures;
 
-class OrderItem
+class ProductItem
 {
     // FIXME
 }
