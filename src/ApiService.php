@@ -13,7 +13,8 @@ class ApiService
 {
     private $apiKey;
 
-    public function __construct(string $apiKey) {
+    public function __construct(string $apiKey)
+    {
         $this->apiKey = $apiKey;
     }
 
@@ -29,6 +30,7 @@ class ApiService
         $body = [
             'recipient' => [
                 'country_code' => 'LV',
+                // ..
             ],
             'items' => [
                 [

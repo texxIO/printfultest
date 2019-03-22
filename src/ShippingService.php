@@ -4,6 +4,7 @@ namespace App;
 
 use App\Interfaces\CacheInterface;
 use App\Structures\AddressItem;
+use App\Structures\OrderItem;
 
 class ShippingService
 {
@@ -12,7 +13,7 @@ class ShippingService
     }
 
     /**
-     * @param array $orderItems
+     * @param OrderItem[] $orderItems
      * @param AddressItem $address
      * @return array
      */
