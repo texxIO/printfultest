@@ -4,22 +4,46 @@ require __DIR__ . '/../vendor/autoload.php';
 use App\ApiService;
 use App\ShippingService;
 use App\Structures\AddressItem;
+use App\Structures\ProductItem;
+use App\FileCache;
+use App\Adapters\Storage\FileStorageAdapter;
+use Dotenv\Dotenv;
 
-require __DIR__ . '/../src/Structures/AddressItem.php';
-require __DIR__ . '/../src/Structures/ProductItem.php';
-require __DIR__ . '/../src/ApiService.php';
-require __DIR__ . '/../src/Interfaces/CacheInterface.php';
-require __DIR__ . '/../src/FileCache.php';
-require __DIR__ . '/../src/ShippingService.php';
+$dotenv = Dotenv::create(realpath('../'));
+$dotenv->load();
 
-$api = new ApiService('');
+$api = new ApiService(getenv('API_KEY'));
 
-$orderItems = [];
-$address = new AddressItem;
+$cachePath = new FileStorageAdapter(realpath('../cache'));
 
-$cache = null;
+if ($cachePath){
+    $cache = new FileCache($cachePath);
+}else{
+    exit('Cache folder not found!');
+}
+
+
 $service = new ShippingService($api, $cache);
+
+$product1 = new ProductItem;
+$product1->setVariantId(7679);
+$product1->setQuantity(2);
+
+//just a test
+//$product2 = new ProductItem;
+//$product2->setVariantId(7676);
+//$product2->setQuantity(2);
+
+$orderItems = [$product1];
+
+
+$address = new AddressItem;
+$address->setAddress1('11025 Westlake Dr');
+$address->setCity('Charlotte');
+$address->setCountryCode('NC');
+$address->setZip('28273');
+
 
 $rates = $service->getRates($orderItems, $address);
 
-print_r($rates);
+echo "<pre>" . print_r($rates,1) . "</pre>";
